@@ -86,7 +86,6 @@ async function startRainbowMode() {
     title.style.color = color;
   }
 
-  hueCycle = 0;
   title.style.color = "";
 }
 
