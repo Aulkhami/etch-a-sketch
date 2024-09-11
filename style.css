@@ -18,6 +18,16 @@ body {
   height: 640px;
 
   background-color: #fff;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  flex-wrap: wrap;
+}
+
+#canvas div {
+  flex: none;
 }
 
 .container {
