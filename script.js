@@ -1,5 +1,6 @@
 // DOM Elements
 const body = document.querySelector("body");
+const title = document.querySelector(".title");
 // Canvas
 const canvas = document.getElementById("canvas");
 const canvasWidth = 640;
@@ -74,15 +75,19 @@ populateCanvas();
 
 async function startRainbowMode() {
   while (isRainbowModeOn) {
-    await new Promise((r) => setTimeout(r, 1000));
+    await new Promise((r) => setTimeout(r, 50));
 
-    hueCycle += 25;
-    if (hueCycle > 255) {
+    hueCycle += 1;
+    if (hueCycle > 360) {
       hueCycle = 0;
     }
 
-    color = `hsl(${hueCycle.toString(16)},100%,50%)`;
+    color = `hsl(${hueCycle},100%,50%)`;
+    title.style.color = color;
   }
+
+  hueCycle = 0;
+  title.style.color = "";
 }
 
 rainbowMode.addEventListener("change", () => {
