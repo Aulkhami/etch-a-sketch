@@ -3,16 +3,23 @@ const body = document.querySelector("body");
 // Canvas
 const canvas = document.getElementById("canvas");
 const canvasWidth = 640;
+// Settings
+const colorSettings = document.getElementById("color");
+const sizeSettings = document.getElementById("pixels");
+const rainbowMode = document.getElementById("rainbow");
+const resetCanvas = document.getElementById("reset-canvas");
 
 // States
+const pixels = [];
 let canvasSize = 16;
 let color = "#000000";
 
 let isMouseDown = false;
 
 function populateCanvas() {
-  if (canvas.hasChildNodes()) {
-    canvas.childNodes.forEach((child) => child.remove());
+  if (pixels.length > 0) {
+    pixels.forEach((pixel) => pixel.remove());
+    pixels.length = 0;
   }
 
   for (let i = 0; i < canvasSize * canvasSize; i++) {
@@ -35,9 +42,30 @@ function populateCanvas() {
     });
 
     canvas.appendChild(pixel);
+    pixels.push(pixel);
   }
 }
 
 body.addEventListener("mouseup", () => (isMouseDown = false));
+
+colorSettings.addEventListener("focusout", () => (color = colorSettings.value));
+sizeSettings.addEventListener("focusout", () => {
+  const value = sizeSettings.value;
+  if (value > 64) {
+    canvasSize = 64;
+    sizeSettings.value = 64;
+  } else if (value < 16) {
+    canvasSize = 16;
+    sizeSettings.value = 16;
+  } else {
+    canvasSize = value;
+  }
+
+  populateCanvas();
+});
+resetCanvas.addEventListener("click", populateCanvas);
+
+colorSettings.value = color;
+sizeSettings.value = canvasSize;
 
 populateCanvas();
