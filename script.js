@@ -15,6 +15,8 @@ let canvasSize = 16;
 let color = "#000000";
 
 let isMouseDown = false;
+let isRainbowModeOn = false;
+let hueCycle = 0;
 
 function populateCanvas() {
   if (pixels.length > 0) {
@@ -69,3 +71,23 @@ colorSettings.value = color;
 sizeSettings.value = canvasSize;
 
 populateCanvas();
+
+async function startRainbowMode() {
+  while (isRainbowModeOn) {
+    await new Promise((r) => setTimeout(r, 1000));
+
+    hueCycle += 25;
+    if (hueCycle > 255) {
+      hueCycle = 0;
+    }
+
+    color = `hsl(${hueCycle.toString(16)},100%,50%)`;
+  }
+}
+
+rainbowMode.addEventListener("change", () => {
+  isRainbowModeOn = rainbowMode.checked;
+  if (isRainbowModeOn) {
+    startRainbowMode();
+  }
+});
