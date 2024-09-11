@@ -28,6 +28,7 @@ body {
 
 #canvas div {
   flex: none;
+  user-select: none;
 }
 
 .container {
