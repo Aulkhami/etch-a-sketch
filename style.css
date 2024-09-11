@@ -1,0 +1,89 @@
+body {
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#canvas {
+  flex: none;
+  width: 640px;
+  height: 640px;
+
+  background-color: #fff;
+}
+
+.container {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.settings {
+  background-color: #1e293b;
+  padding: 16px;
+
+  flex: auto;
+  max-width: 240px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border-radius: 25px;
+}
+
+.settings .subcontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.settings .item {
+  background-color: #334155;
+  padding: 16px;
+  
+  border-radius: 16px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#pixels {
+  width: 32px;
+}
+
+input[type='color'] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  height: 30px;
+  width: 50px;
+
+  border-radius: 5px;
+
+  padding: 0;
+  margin: 0;
+}
+
+#reset-canvas {
+  background-color: #f8fafc;
+  color: #020617;
+  font-weight: bold;
+
+  padding: 16px;
+  border-radius: 16px;
+}
